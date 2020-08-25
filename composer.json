@@ -1,0 +1,53 @@
+{
+    "name": "bishopm/api",
+    "type": "library",
+    "description": "Lumen api",
+    "keywords": [],
+    "homepage": "https://github.com/bishopm/api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Bishop",
+            "email": "admin@church.net.za",
+            "homepage": "https://github.com/bishopm",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "Bishopm\\Api\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "bishopm\\api\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "post-install-cmd": [
+            "ln -sr storage/app/public public/storage"
+        ],
+        "post-package-update": [
+            "php artisan migrate"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Bishopm\\Api\\Providers\\ApiServiceProvider"
+            ]
+        }
+    }
+}
